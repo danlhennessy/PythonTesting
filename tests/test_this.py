@@ -1,10 +1,22 @@
-# test_capitalize.py
-
 import pytest
 
-def test_capital_case():
-    assert capital_case('semaphore') == 'Semaphore'
 
-def test_raises_exception_on_non_string_arguments():
-    with pytest.raises(TypeError):
-        capital_case(9)
+def test_with_yield_fixture(yield_fixture):
+    print("\n    Running test_with_yield_fixture: {}".format(yield_fixture))
+    assert "foo" in yield_fixture
+
+
+@pytest.fixture
+def yield_fixture():
+    """
+    Fixtures can yield their data
+    (additional code will run after the test)
+    """
+    print("\n\n(Initializing yield_fixture)")
+    x = {"foo": "bar"}
+
+    # Remember, unlike generators, fixtures should only yield once (if at all)
+    yield x
+
+    print("\n(Cleaning up yield_fixture)")
+    del(x)
