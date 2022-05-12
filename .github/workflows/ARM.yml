@@ -1,3 +1,5 @@
+name: ARM Deploy
+
 on:
   workflow_run:
     workflows: [Python application]
