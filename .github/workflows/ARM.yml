@@ -1,6 +1,6 @@
 on:
   workflow_run:
-    workflows: [pytest]
+    workflows: [Python application]
     types: [completed]
 name: Azure ARM
 jobs:
